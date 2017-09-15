@@ -548,7 +548,8 @@ export class DragScroll implements OnDestroy, OnInit, OnChanges, AfterViewInit, 
 
     const contentElement = this._contentRef.nativeElement;
     const childrenArray = this.snaps['_results'];
-    if (childrenArray.length <= 1 && this.scrollReachesLeftEnd) {
+    if (contentElement.scrollLeft === 0 &&
+      contentElement.scrollWidth < contentElement.clientWidth) {
       // only one element
       this.reachesLeftBound.emit(true);
       this.reachesRightBound.emit(true);
